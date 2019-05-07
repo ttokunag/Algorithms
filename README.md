@@ -1,3 +1,3 @@
 # Algorithms
-### Author - Tomoya Tokunaga
+### Tomoya Tokunaga (mailto: ttokunag@ucsd.edu)
 
