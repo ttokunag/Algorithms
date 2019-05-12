@@ -1,11 +1,19 @@
-# CSE12
-Repository for CSE 12 projects
+# Sorting Algorithms
+### Tomoya Tokunaga (mailto: ttokunag@ucsd.edu)
 
-# Programming Assignment 3
-This file is for a programming assignment 3, which is about sorting algorithms.
+This repository consists of 2 components: Algorithm part and Comparator part
+### Comparator
+This component contains all rules about how we compare 2 elements, namely, which come before and after.
+The followings are all comparators used for the sorting algorithms
+- Integers (usual integer comparison)
+- Strings (Lexicographical order)
+- Reverse Strings (Lexicographical order of reversed String)
+- Student (based on students' ID and cumulative GPA)
 
-## Author
-Tomoya Tokunaga (A15704164, mailto: ttokunag@ucsd.edu)
-
-## Acknowledgement
-* zyBooks(CSE 12: Basic Data Structures and Object-Oriented Design), Ch5
+## Algorithms
+This component contains well-known sorting algorithms.
+The followings are their name and average complexity
+- **Bubble sort**: O(N^2) time | O(1) space
+- **Selection sort**: O(N^2) time | O(1) space
+- **Merge Sort**: O(Nlog(N)) time | O(N) space
+- **Count sort**: O(N) time | O(N) space
