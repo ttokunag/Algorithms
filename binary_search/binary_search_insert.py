@@ -2,6 +2,7 @@ def bin_search_insert(arr, target):
     
     # set min & max index in order to find median index
     left, right = 0, len(arr)-1
+    
     # iteratively search where the target fits in
     while left != right:
         med = (left + right)//2
@@ -22,6 +23,7 @@ def bin_search_insert(arr, target):
                 arr.insert(med+1, target)
                 return
             left = med + 1
+            
     # if the right/left cursor reaches the either ends
     if left == len(arr)-1:
         arr.append(target)
