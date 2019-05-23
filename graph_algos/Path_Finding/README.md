@@ -8,3 +8,6 @@ performance, then plot the data on a graph to visually explain the difference of
 The following is a visualization I made in a notebook:<br><br>
 <img src="https://github.com/ttokunag/Algorithms/blob/master/graph_algos/Path_Finding/pictures/Screen%20Shot%202019-05-21%20at%201.58.42%20AM.png" width="600">
 <br>This graph show the performances of two algorithms with different sizes of graph data structures.
+
+#### BFS_DFS_pyfile
+This directory contains py-files which include functions I used in the IPython notebook.
