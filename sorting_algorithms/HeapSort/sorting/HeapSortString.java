@@ -1,5 +1,3 @@
-package com.cse.ds.sorting;
-
 /**
  * Author Tomoya Tokunaga(mailto: ttokunag@ucsd.edu)
  * About this file:

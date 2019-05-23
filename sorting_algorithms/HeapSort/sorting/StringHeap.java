@@ -1,5 +1,3 @@
-package com.cse.ds.sorting;
-
 import java.util.Arrays;
 
 /**
