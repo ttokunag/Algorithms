@@ -16,5 +16,6 @@ The followings are their name and average complexity
 - **Bubble sort**: O(N^2) time | O(1) space
 - **Selection sort**: O(N^2) time | O(1) space
 - **Merge Sort**: O(Nlog(N)) time | O(N) space
+- **Heap Sort**: O(Nlog(N)) time | O(1) space
 - **Count sort**: O(N) time | O(N) space
 
