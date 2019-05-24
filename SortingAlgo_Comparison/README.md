@@ -1,4 +1,4 @@
-# Time Complexity Comparison
+# Sorting Algorithms Comparison
 ### Tomoya Tokunaga(mailto: ttokunag@ucsd.edu)
 This IPython notebook is about the experiment of timing performances of well-known sorting algorithms such as **Insertion** sort, 
 **Heap** sort, **Merge** sort, and **Quick** sort. I was so curious about why algorithms performances differ even though 
