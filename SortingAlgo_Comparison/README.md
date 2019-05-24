@@ -10,3 +10,5 @@ the performance difference by plotting the data on a graph. The followings are t
 
 I made analysis from my viewpoint, so I would be happy if you read the notebook if you get interested in by accident. 
 I'm look forward to your feedbacks!
+
+If you cannot see the IPython notebook, try [this html version of it](http://ttoku.com/Time_Complexity_Comparison.html)
