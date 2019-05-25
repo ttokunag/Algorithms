@@ -48,7 +48,7 @@ class graph(object):
     '''
     def dijkstra(self, start, dest):
         # a list stores visited nodes
-        visited = []
+        #visited = []
         # the distance from the start to the start is 0
         # (this follows the Dijkstra's algorithm)
         start.set_distance(0)
@@ -71,33 +71,39 @@ class graph(object):
                         adj[0].set_distance(curr_node.distance + adj[1])
                         adj[0].set_prev(curr_node)
             
-            visited.append(curr_node)
+            #visited.append(curr_node)
         
         # the following codes prints out the shortest path and its cost
-        shortest_path = ""
-        curr_node_back = dest
-        while curr_node_back:
-            shortest_path += curr_node_back.val
-            if curr_node_back.prev_pointer:
-                shortest_path += " >- "
-            curr_node_back = curr_node_back.prev_pointer
-
-        print("Shortest path: {} (cost of {})".format(shortest_path[::-1], dest.distance))
-        return visited
+        #return visited
         
-            
-        
-F = graph_node("F")
-E = graph_node("E", [(F, 4)])
-D = graph_node("D", [(E, 6)])
-B = graph_node("B", [(F, 6)])
-C = graph_node("C", [(D, 3),(B, 2),(E, 2)])
-A = graph_node("A", [(C, 4),(B, 5),(D, 2)])
 
-nodes = [A,B,C,D,E,F]
-Graph = graph(nodes)
-Graph.dijkstra(A, F)
-'''
-* the above code prints out the following:
-* Shortest path: A -> C -> E -> F (cost of 10)
-'''
+#---------------- Testing -----------------#     
+if __name__ == "__main__":
+    # initializes graph nodes
+    F = graph_node("F")
+    E = graph_node("E", [(F, 4)])
+    D = graph_node("D", [(E, 6)])
+    B = graph_node("B", [(F, 6)])
+    C = graph_node("C", [(D, 3),(B, 2),(E, 2)])
+    A = graph_node("A", [(C, 4),(B, 5),(D, 2)])
+
+    nodes = [A,B,C,D,E,F]
+    Graph = graph(nodes)
+    start, dest = A, F
+    Graph.dijkstra(start, dest)
+
+    # the followings prints out the shortest path
+    shortest_path = ""
+    curr_node_back = dest
+    while curr_node_back:
+        shortest_path += curr_node_back.val
+        if curr_node_back.prev_pointer:
+            shortest_path += " >- "
+        curr_node_back = curr_node_back.prev_pointer
+
+    print("Shortest path: {} (cost of {})".format(shortest_path[::-1], dest.distance))
+
+    '''
+    * the above code prints out the following:
+    * Shortest path: A -> C -> E -> F (cost of 10)
+    '''
