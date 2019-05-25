@@ -1,17 +1,20 @@
 '''
 * Author: Tomoya Tokunaga(mailto: ttokunag@ucsd.edu)
-*
 '''
 
-def merge_sort(arr):
-    # an array length of <= 1 is already sorted
-    if len(arr) <= 1:
-        return arr
-    # set a pivot to divide the given array into two
-    pivot = len(arr)//2
-    left_arr = merge_sort(arr[:pivot])
-    right_arr = merge_sort(arr[pivot:])
+class merge_sort(object):
     
+    def sort(arr):
+        # an array length of <= 1 is already sorted
+        if len(arr) <= 1:
+            return arr
+        # set a pivot to divide the given array into two
+        pivot = len(arr)//2
+        left_arr = merge_sort(arr[:pivot])
+        right_arr = merge_sort(arr[pivot:])
+        # merge method is defined below
+        return merge(left_arr, right_arr)
+
     '''
     * the following is a helper method to recursively sort subarrayslef
     * @param left_array: the left divided array
@@ -33,4 +36,4 @@ def merge_sort(arr):
         res.extend(right_arr[right_cur:])
         return res
     
-    return merge(left_arr, right_arr)
+    
