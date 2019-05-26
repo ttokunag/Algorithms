@@ -14,7 +14,7 @@ class graph_node(object):
     * @param val: the value of the node
     * @param adjacents: a list of its adjacent nodes
     '''
-    def __init__(self, val, adjacents=None):
+    def __init__(self, val, adjacents=[]):
         # val is the value of a vertex. it can be location names,
         # server names, intersections in real life applications
         self.val = val
@@ -27,13 +27,17 @@ class graph_node(object):
     # a method to set a previous pointer
     def set_prev(self, node):
         self.prev_pointer = node
+        
+    # a method to add an adjacent node
+    def set_adjacent(self, node, weight):
+        self.adjacents.append((node, weight))
     
     # a method to set a distance from the start node
     def set_distance(self, dist):
         self.distance = dist
 
 
-class graph(object):
+class graph_heap(object):
     '''
     * a constructor of a graph structure
     * @param vertices: a list of vertices which belong to the graph
@@ -57,44 +61,17 @@ class graph(object):
 
         while self.unvisited.size() != 0:
             # min-heap's root at this point is the start node
-            curr_node = self.unvisited.heappop()
+            curr_node = self.unvisited.peek()
             
             # updates adjacent nodes distance
-            if curr_node is not None and curr_node.adjacents is not None:
+            if curr_node and curr_node.adjacents:
                 for adj in curr_node.adjacents:
                     if curr_node.distance + adj[1] < adj[0].distance:
                         adj[0].set_distance(curr_node.distance + adj[1])
                         adj[0].set_prev(curr_node)
+            
+            # pop the minimum item, and heapify the queue
+            self.unvisited.heappop()
     
         
-
-#---------------- Testing -----------------#     
-if __name__ == "__main__":
-    # initializes graph nodes
-    F = graph_node("F")
-    E = graph_node("E", [(F, 4)])
-    D = graph_node("D", [(E, 6)])
-    B = graph_node("B", [(F, 6)])
-    C = graph_node("C", [(D, 3),(B, 2),(E, 2)])
-    A = graph_node("A", [(C, 4),(B, 5),(D, 2)])
-
-    nodes = [A,B,C,D,E,F]
-    Graph = graph(nodes)
-    start, dest = A, F
-    Graph.dijkstra(start, dest)
-
-    # the followings prints out the shortest path
-    shortest_path = ""
-    curr_node_back = dest
-    while curr_node_back:
-        shortest_path += curr_node_back.val
-        if curr_node_back.prev_pointer:
-            shortest_path += " >- "
-        curr_node_back = curr_node_back.prev_pointer
-
-    print("Shortest path: {} (cost of {})".format(shortest_path[::-1], dest.distance))
-
-    '''
-    * the above code prints out the following:
-    * Shortest path: A -> C -> E -> F (cost of 10)
-    '''
+    

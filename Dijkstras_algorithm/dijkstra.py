@@ -1,18 +1,20 @@
+from Min_heap.minheap import Minheap
 '''
 * Author: Tomoya Tokunaga(mailto: ttokunag@ucsd.edu)
 * About this file:
 * This file implements Dijkstra's shortest path algorithm with a LIST
-* Complexity: O(V^2 + E) time | O(V) space (this stores node & distance pair
-* to a list, so it takes a space)
+* Complexity(with a list): O(V^2 + E) time | O(1) space
+* Complexity(with a heap): O((V + E)*logV) time | O(1) space
 '''
 
+# This class is a component of a graph structure
 class graph_node(object):
     '''
     * a graph node constructor
     * @param val: the value of the node
     * @param adjacents: a list of its adjacent nodes
     '''
-    def __init__(self, val, adjacents=None):
+    def __init__(self, val, adjacents=[]):
         # val is the value of a vertex. it can be location names,
         # server names, intersections in real life applications
         self.val = val
@@ -25,13 +27,18 @@ class graph_node(object):
     # a method to set a previous pointer
     def set_prev(self, node):
         self.prev_pointer = node
+        
+    # a method to add an adjacent node
+    def set_adjacent(self, node, weight):
+        self.adjacents.append((node, weight))
     
     # a method to set a distance from the start node
     def set_distance(self, dist):
         self.distance = dist
 
 
-class graph(object):
+# This class uses a list for an unvisited nodes queue
+class graph_list(object):
     '''
     * a constructor of a graph structure
     * @param vertices: a list of vertices which belong to the graph
@@ -47,8 +54,6 @@ class graph(object):
     * @param dest: a node which one want to know the distance from the start
     '''
     def dijkstra(self, start, dest):
-        # a list stores visited nodes
-        #visited = []
         # the distance from the start to the start is 0
         # (this follows the Dijkstra's algorithm)
         start.set_distance(0)
@@ -71,39 +76,40 @@ class graph(object):
                         adj[0].set_distance(curr_node.distance + adj[1])
                         adj[0].set_prev(curr_node)
             
-            #visited.append(curr_node)
         
-        # the following codes prints out the shortest path and its cost
-        #return visited
-        
-
-#---------------- Testing -----------------#     
-if __name__ == "__main__":
-    # initializes graph nodes
-    F = graph_node("F")
-    E = graph_node("E", [(F, 4)])
-    D = graph_node("D", [(E, 6)])
-    B = graph_node("B", [(F, 6)])
-    C = graph_node("C", [(D, 3),(B, 2),(E, 2)])
-    A = graph_node("A", [(C, 4),(B, 5),(D, 2)])
-
-    nodes = [A,B,C,D,E,F]
-    Graph = graph(nodes)
-    start, dest = A, F
-    Graph.dijkstra(start, dest)
-
-    # the followings prints out the shortest path
-    shortest_path = ""
-    curr_node_back = dest
-    while curr_node_back:
-        shortest_path += curr_node_back.val
-        if curr_node_back.prev_pointer:
-            shortest_path += " >- "
-        curr_node_back = curr_node_back.prev_pointer
-
-    print("Shortest path: {} (cost of {})".format(shortest_path[::-1], dest.distance))
+# This class uses a binary min-heap for an unvisited node queue
+class graph_heap(object):
+    '''
+    * a constructor of a graph structure
+    * @param vertices: a list of vertices which belong to the graph
+    '''
+    def __init__(self, vertices):
+        # heapify the given list regarding to 
+        # the distance of each node from the start node
+        self.unvisited = Minheap(vertices)
 
     '''
-    * the above code prints out the following:
-    * Shortest path: A -> C -> E -> F (cost of 10)
+    * a method to find a shortest path from the given start node
+    * to the given destination using Dijkstra's algorithm
+    * @param start: a node which one want to know the distance from
+    * @param dest: a node which one want to know the distance from the start
     '''
+    def dijkstra(self, start, dest):
+        # the distance from the start to the start is 0
+        # (this follows the Dijkstra's algorithm)
+        start.set_distance(0)
+        curr_node = None
+
+        while self.unvisited.size() != 0:
+            # min-heap's root at this point is the start node
+            curr_node = self.unvisited.peek()
+            
+            # updates adjacent nodes distance
+            if curr_node and curr_node.adjacents:
+                for adj in curr_node.adjacents:
+                    if curr_node.distance + adj[1] < adj[0].distance:
+                        adj[0].set_distance(curr_node.distance + adj[1])
+                        adj[0].set_prev(curr_node)
+            
+            # pop the minimum item, and heapify the queue
+            self.unvisited.heappop()
