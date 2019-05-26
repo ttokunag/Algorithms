@@ -6,7 +6,7 @@ their Big O notations are the same that I do this experiment.
 
 I timed every algorithm performance and create a dataframe using `pandas` python library, and at the end I visualized 
 the performance difference by plotting the data on a graph. The followings are the actual graphs I've created in the notebook.<br>
-<img src="https://github.com/ttokunag/Algorithms/blob/master/SortingAlgo_Comparison/pictures/runtime_analysis1.png" width="550">
+<img src="https://github.com/ttokunag/Algorithms/blob/master/Algorithm_Comparison/pictures/runtime_analysis1.png" width="550">
 
 I made analysis from my viewpoint, so I would be happy if you read the notebook if you get interested in by accident. 
 I'm look forward to your feedbacks!
