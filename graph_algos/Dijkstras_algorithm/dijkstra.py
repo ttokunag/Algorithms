@@ -48,7 +48,7 @@ class graph(object):
     '''
     def dijkstra(self, start, dest):
         # a list stores visited nodes
-        #visited = []
+        visited = []
         # the distance from the start to the start is 0
         # (this follows the Dijkstra's algorithm)
         start.set_distance(0)
@@ -71,10 +71,9 @@ class graph(object):
                         adj[0].set_distance(curr_node.distance + adj[1])
                         adj[0].set_prev(curr_node)
             
-            #visited.append(curr_node)
+            visited.append(curr_node)
         
-        # the following codes prints out the shortest path and its cost
-        #return visited
+        return visited
         
 
 #---------------- Testing -----------------#     
