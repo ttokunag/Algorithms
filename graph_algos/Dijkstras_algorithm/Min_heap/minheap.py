@@ -60,6 +60,11 @@ class Minheap(object):
     # a method returns the number of elements in the heap
     def size(self):
         return len(self.arr)
+    
+    def peek(self):
+        if len(self.arr) == 0:
+            return
+        return self.arr[0]
 
     # a method which prints the elements of the heap in the array form
     def to_str(self):
@@ -67,27 +72,5 @@ class Minheap(object):
         print(res)
 
 
-#------------- Graph node class used in the Min-Heap --------------#
-class graph_node(object):
-    '''
-    * a graph node constructor
-    * @param val: the value of the node
-    * @param adjacents: a list of its adjacent nodes
-    '''
-    def __init__(self, val, adjacents=None):
-        # val is the value of a vertex. it can be location names,
-        # server names, intersections in real life applications
-        self.val = val
-        self.prev_pointer = None
-        self.distance = float('inf')
-        # its adjacent nodes are stored in an array
-        # this array contains tuple pair, (adjacent_node, weight)
-        self.adjacents = adjacents
-    
-    # a method to set a previous pointer
-    def set_prev(self, node):
-        self.prev_pointer = node
-    
-    # a method to set a distance from the start node
-    def set_distance(self, dist):
-        self.distance = dist
+
+        
