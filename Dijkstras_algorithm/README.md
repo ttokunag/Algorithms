@@ -5,3 +5,4 @@ This repository contains files about [Dijkstra's shortest path algorithm](https:
 
 ### Algorithm Description
 Dijkstra's algorithm is a sort of greediness algorithm introduced by Dutch computer scientist, Edsger W. Dijkstra.
+This algorithm has the advantage over the Breadth First Search to find a shortest path of a **weighted** directed graph. 
