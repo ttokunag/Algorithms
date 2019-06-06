@@ -21,4 +21,4 @@ This directory contains files implements well-known sorting algorithms such as M
 It's very interesting to see how well each sorting algorithm in terms of time complexity, so I conducted complexity analysis of algorithms whose Big O notation is the same. The notebook is stored in [`Algorithm Comparison`](https://github.com/ttokunag/Algorithms/tree/master/Algorithm_Comparison) directory.
 
 ### `Searching Algorithms`
-This directory contains files implements well-know sorting algorithms such as Binary search.
+This directory contains files implements well-know sorting algorithms such as Binary search, Exponential search.
